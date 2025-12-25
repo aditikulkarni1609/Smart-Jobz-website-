@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Jobz - Application Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0096FF, #0066CC);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background: white;
+      padding: 50px 50px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+      width: 420px;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 10px auto;
+      width: 80px;
+      height: 80px;
+      background: #007BFF;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    input,
+    select,
+    textarea,
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+      margin-top: 10px;
+    }
+
+    .after {
+      background-color: #007BFF;
+      border: none;
+      border-radius: 24px;
+      display: block;
+      color: white;
+      padding: 2px 5px;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 19px;
+      text-decoration: none;
+    }
+
+    .after:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <!-- Logo Placeholder -->
+    <img src="smartjobz-logo.jpg" alt="logo" class="logo">
+
+    <h2>Smart Jobz - Application Form</h2>
+    <form id="jobForm">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" name="fullname" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="email">Current Salary</label>
+      <input type="number" id="salary" name="salary" required>
+
+      <label for="salary">Expected Salary</label>
+      <input type="number" id="salary" name="salary" required>
+      <br><br>
+      <label for="Notice Period">Notice Period</label>
+      <select id="notice" name="notice" required placeholder="Please select notice period" style="width: 100%;">
+        <option value="15 Days">15 Days</option>
+        <option value="30 Days">30 Days</option>
+        <option value="60 Days">60 Days</option>
+        <option value="90 Days">90 Days</option>
+      </select>
+      <br><br>
+      <!---if other values, please mention, input number of days-->
+      <label for="others">If other, please mention</label>
+      <input type="number" id="others" name="number"><br><br>
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
+
+      <label for="position">Position Applied For</label>
+      <input type="text" id="position" name="position" required>
+
+      <label for="resume">Upload Resume (PDF)</label>
+      <input type="file" id="resume" name="resume" accept=".pdf" required>
+
+      <label for="cover">Cover Letter</label>
+      <textarea id="cover" name="cover" rows="4" placeholder="Write a short cover letter..." required></textarea>
+
+      <button type="submit">Submit Application</button>
+    </form>
+    <!---viewer should go back to website after submitting-->
+    <div class="after">
+      <button class="after" onclick="window.location.href='website.html'">Go back to home page</button>
+    </div>
+    <footer>© 2025 Smart Jobz. All rights reserved.</footer>
+  </div>
+
+  <script>
+    //should display alert message to user after submitting
+    document.getElementById("jobForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Thank you for applying at Smart Jobz! Your application has been submitted.");
+      this.reset();
+    });
+
+    //input should be stored in localstorage
+    localStorage.setItem("fullname", document.getElementById("fullname").value);
+    localStorage.setItem("email", document.getElementById("email").value);
+    localStorage.setItem("phone", document.getElementById("phone").value);
+    localStorage.setItem("position", document.getElementById("position").value);
+    localStorage.setItem("resume", document.getElementById("resume").value);
+    localStorage.setItem("cover", document.getElementById("cover").value);
+
+  </script>
+</body>
+
+</html>
