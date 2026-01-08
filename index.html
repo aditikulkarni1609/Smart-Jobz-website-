@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Jobz - Your Career Partner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            color: white;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .section-bg {
+            position: relative;
+            background-image: url('sjff2.avif');
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* overlay */
+        .section-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        .section-bg>* {
+            position: relative;
+            z-index: 1;
+        }
+
+
+        .bg {
+            padding: 20px;
+            padding-bottom: 0;
+        }
+
+        .nav {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 0;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 20px 30px;
+            align-items: center;
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.12),
+                0 2px 8px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border: none;
+            transition: all 0.3s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            margin: 0;
+        }
+
+        .nav:hover {
+            box-shadow:
+                0 15px 50px rgba(0, 0, 0, 0.15),
+                0 5px 15px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .links a {
+            color: #0066CC;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: 0.3px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            padding: 0px 0;
+            margin: 0px 0;
+        }
+
+        .links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #0096FF, #0066CC);
+            border-radius: 2px;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .links a:hover::after {
+            width: 100%;
+        }
+
+        .links a:hover {
+            color: #0096FF;
+            transform: translateY(-2px);
+            text-shadow: 0 2px 8px rgba(0, 150, 255, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-right: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            height: 55px;
+            width: 55px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow:
+                0 4px 12px rgba(0, 150, 255, 0.3),
+                0 0 0 4px rgba(0, 150, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .logo img:hover {
+            box-shadow:
+                0 6px 20px rgba(0, 150, 255, 0.4),
+                0 0 0 6px rgba(0, 150, 255, 0.15);
+        }
+
+        .logo-text {
+            color: #0066CC;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #0096FF 0%, #0066CC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+        }
+
+        .company-name {
+            color: #0066CC;
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-align: center;
+            background: linear-gradient(135deg, #0096FF 0%, #0066CC 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 10px rgba(0, 150, 255, 0.1);
+            justify-self: center;
+        }
+
+        .signup {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .form-button {
+            background: linear-gradient(135deg, #0096FF 0%, #0066CC 100%);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            padding: 12px 32px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+            box-shadow:
+                0 4px 15px rgba(0, 150, 255, 0.3),
+                0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .form-button:hover::before {
+            left: 100%;
+        }
+
+        .form-button:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 8px 25px rgba(0, 150, 255, 0.4),
+                0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Slide Text Overlay */
+        .slide-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            width: 90%;
+            max-width: 900px;
+            padding: 40px 20px;
+        }
+
+        .slide-text h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            margin-top: 0px;
+            color: white;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 2px 10px rgba(0, 0, 0, 0.3);
+            animation: slideTextIn 0.8s ease-out 0.3s both;
+        }
+
+        .slide-text p {
+            font-size: 22px;
+            line-height: 1.6;
+            color: white;
+            margin-bottom: 8px;
+            margin-top: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            animation: slideTextIn 0.8s ease-out 0.5s both;
+        }
+
+        .slide-text .tagline {
+            font-size: 28px;
+            font-weight: 600;
+            font-style: italic;
+            margin-top: 5px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            opacity: 0.95;
+            animation: slideTextIn 0.8s ease-out 0.4s both;
+        }
+
+        /* About Section */
+        .about-section {
+            width: 100%;
+            margin-top: 100px;
+            padding: 60px 20px;
+            /* Background managed by .section-bg class in HTML */
+            position: relative;
+            display: none;
+            animation: slideDown 0.5s ease-out;
+            text-align: center;
+        }
+
+        /* Removed .about-section::before to behave like transparent background */
+
+        .about-section>* {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            /* Constrain text width but no visible box */
+            margin: 0 auto;
+        }
+
+        .about-section.active {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about-section h2 {
+            color: #ffffff;
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-section h3 {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .about-section p {
+            color: #f0f0f0;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .about-content {
+            color: #f0f0f0;
+        }
+
+
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .mission-box,
+        .vision-box {
+            background: linear-gradient(135deg, #0096FF 0%, #0066CC 100%);
+            padding: 30px;
+            border-radius: 16px;
+            color: white;
+        }
+
+        .mission-box h3,
+        .vision-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .mission-box p,
+        .vision-box p {
+            color: white;
+            opacity: 0.95;
+        }
+
+        .close-btn {
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            color: #0096FF;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #0066CC;
+            transform: scale(1.2);
+        }
+
+        .home-content {
+            display: block;
+        }
+
+        .home-content.hidden {
+            display: none;
+        }
+
+        /* Hero Container */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            margin: 0;
+            margin-top: 95px;
+            padding: 0;
+        }
+
+        /* Slideshow Container */
+        .slideshow-container {
+            width: 100%;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            height: 90vh;
+        }
+
+        .slide {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .slide.active {
+            display: block;
+            animation: slideInFromRight 0.8s ease-out;
+            z-index: 2;
+        }
+
+        .slide.slide-out {
+            display: block;
+            animation: slideOutToLeft 0.8s ease-out;
+            z-index: 1;
+        }
+
+
+
+        .slide img {
+            width: 100%;
+            height: 90vh;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            filter: brightness(0.7);
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutToLeft {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        @keyframes slideTextIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Slideshow Navigation Dots - Hidden */
+        .dots-container {
+            display: none;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #0096FF 0%, #0066CC 100%);
+            border: 2px solid white;
+            border-radius: 50px;
+            color: white;
+            padding: 16px 48px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            background: white;
+            color: #0096FF;
+        }
+
+        /* Arrow Navigation - Hidden */
+        .prev,
+        .next {
+            display: none;
+        }
+
+        /* Services Section */
+        .services-section {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 50px 40px;
+            min-height: auto;
+            background-repeat: no-repeat;
+            position: relative;
+            border-radius: 24px;
+        }
+
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 102, 204, 1);
+            border-radius: 24px;
+            z-index: 0;
+        }
+
+        .services-section>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .services-section h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: white;
+            letter-spacing: -1px;
+            text-align: center;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            min-height: auto;
+        }
+
+        .services-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.95);
+            letter-spacing: 1px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .services-list {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-item:hover {
+            padding-left: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .service-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #0096FF 0%, #0066CC 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 2px;
+        }
+
+        .service-item p {
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.6;
+            margin: 0;
+            flex: 1;
+        }
+
+        /* Contact Section */
+        /* Contact Section */
+        .contact-section {
+            display: none;
+            /* Toggled to flex by .active */
+            width: 100%;
+            margin: 0;
+            padding: 20px;
+            /* Background managed by .section-bg class or explicit override if needed, user requested jobz2.jpg */
+            background-image: url('jobz2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            /* centering setup */
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Removed .contact-section::before */
+
+        .contact-section .content-box {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 50px;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .contact-section>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-section.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Remove padding-top overrides that might shift center */
+            padding-top: 80px;
+            /* Keep space for navbar if needed */
+        }
+
+        .contact-section h2 {
+            font-size: 36px;
+            color: #0096FF;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 800;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .contact-item {
+            padding: 30px;
+            border-radius: 16px;
+            background-color: #0096FF;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 1;
+            min-width: 300px;
+            /* prevent squishing */
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 150, 255, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 40px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .contact-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .contact-value a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-value a:hover {
+            opacity: 0.8;
+        }
+
+        /* OUR CLIENTS – CAROUSEL */
+        /* OUR CLIENTS SECTION */
+
+        .clients-section {
+            display: none;
+            /* Toggled to flex by .active */
+            width: 100%;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            /* Background managed by .section-bg class in HTML */
+            position: relative;
+            /* centering setup */
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Removed .clients-section::before to allow full image visibility */
+
+        .clients-section .content-box {
+            background: rgba(0, 102, 204, 0.9);
+            padding: 40px;
+            border-radius: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .clients-section>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .clients-section>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .clients-section.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 80px;
+            /* Space for navbar */
+        }
+
+        .clients-section h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+            font-weight: 800;
+            color: #ffffff;
+            -webkit-text-fill-color: #ffffff;
+        }
+
+
+        /* VIEWPORT */
+        .clients-wrapper {
+            overflow: hidden;
+            width: 100%;
+            min-height: auto;
+            min-width: auto;
+        }
+
+        /* MOVING STRIP */
+        .clients-track {
+            display: flex;
+            width: fit-content;
+        }
+
+        /* CARD */
+        .client-item {
+            width: 200px;
+
+            height: 200px;
+            background: #fff;
+            border-radius: 16px;
+            margin-right: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* IMAGE — NO DISTORTION */
+        .client-item img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        @media (max-width: 600px) {
+            .client-item {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* FOOTER */
+        .footer {
+            margin-top: 120px;
+            padding: 60px 20px 30px;
+            min-height: auto;
+            position: relative;
+            backdrop-filter: blur(10px);
+            border-top-left-radius: 32px;
+            border-top-right-radius: 32px;
+            box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.15);
+            color: #003366;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-top-left-radius: 32px;
+            border-top-right-radius: 32px;
+            z-index: 0;
+        }
+
+        .footer>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .footer h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #0066CC;
+        }
+
+        .footer p,
+        .footer a {
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            line-height: 1.7;
+        }
+
+        .footer a:hover {
+            color: #0096FF;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-brand {
+            font-size: 26px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #0096FF, #0066CC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-links {
+                align-items: center;
+            }
+        }
+
+        /* WHY US SECTION */
+        .why-us-section {
+            max-width: 1000px;
+            margin: 60px auto 40px;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .why-us-section h2 {
+            font-size: 32px;
+            font-weight: 800;
+            text-align: center;
+            color: #0066CC;
+            margin-bottom: 40px;
+        }
+
+        .why-us-grid {
+            display: block;
+        }
+
+        .why-us-item {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 102, 204, 0.15);
+        }
+
+        .why-us-item:last-child {
+            border-bottom: none;
+        }
+
+        .why-us-icon {
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+        }
+
+        .why-us-item h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0066CC;
+            margin-bottom: 8px;
+            margin-top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .why-us-item p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #444;
+            margin: 8px 0 0 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 992px) {
+            .why-us-grid {
+                display: block;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .why-us-grid {
+                display: block;
+            }
+        }
+
+
+        @media (max-width: 600px) {
+            .client-item {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+
+    <div class="nav">
+        <div class="links">
+            <div class="logo">
+                <img src="smartjobz-logo.jpg" alt="Smart Jobz Logo">
+                <span class="logo-text">Smart Jobz Recruitment Services</span>
+            </div>
+            <a href="#" onclick="showHome(event)">Home</a>
+            <a href="#" onclick="showAbout(event)">About us</a>
+            <a href="#" onclick="showClient(event)">Our clients</a>
+            <a href="#" onclick="showContact(event)">Contact us</a>
+
+        </div>
+        <div class="signup">
+            <a href="class4.html" class="form-button">Get Started</a>
+        </div>
+    </div>
+    <div class="home-content" id="homeContent">
+
+        <!-- HERO SECTION WITH SLIDESHOW -->
+        <div class="hero-container">
+            <!-- SLIDESHOW -->
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <img src="sjf2.jpg" alt="Professional Recruitment Services">
+                    <div class="slide-text">
+                        <h1>Welcome to Smart Jobz</h1>
+                        <p class="tagline">Your partner in success</p>
+                        <p>Your trusted partner in finding the perfect career opportunity</p>
+                        <p>Connecting talented professionals with leading companies worldwide</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="jobz2.jpg" alt="Career Development">
+                    <div class="slide-text">
+                        <h1>Build Your Future</h1>
+                        <p>Expert career guidance and professional development</p>
+                        <p>Unlock your potential with personalized job matching</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="jobz3.jpg" alt="Job Opportunities">
+                    <div class="slide-text">
+                        <h1>Find Your Dream Job</h1>
+                        <p>Access exclusive opportunities from top companies</p>
+                        <p>Start your journey to success today</p>
+                    </div>
+                </div>
+
+                <a class="prev" onclick="changeSlide(-1)"></a>
+                <a class="next" onclick="changeSlide(1)"></a>
+            </div>
+        </div>
+
+        <!-- SERVICES -->
+        <div class="services-section section-bg services-bg">
+            <h2>Our Services</h2>
+            <h3>Recruitment Services Include:</h3>
+
+            <div class="services-list">
+                <div class="service-item">
+                    <div class="service-icon">✓</div>
+                    <p>Identifying the requirements and need for the role</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">✓</div>
+                    <p>Designing job and person descriptions</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">✓</div>
+                    <p>Candidate screening</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">✓</div>
+                    <p>Candidate profiling</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">✓</div>
+                    <p>Short-listing applicants</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">✓</div>
+                    <p>Interviewing</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END HOME CONTENT -->
+
+    <!-- About Us Section -->
+    <div class="about-section section-bg about-bg" id="aboutSection">
+
+        <span class="close-btn" onclick="closeAbout()">&times;</span>
+        <h2>About Smart Jobz</h2>
+        <div class="about-content">
+            <p>
+                Smart Jobz is a recruitment and consulting firm operating in India. We are devoted to our clients'
+                requirements and preserve an optimistic difference in staffing needs. We at Smart Jobz are a
+                headhunting
+                and manpower recruitment firm of high repute and recognition. We want to gain this recognition by
+                providing exceptional customer service and talented employees to diverse corporates of all sizes in
+                India.
+            </p>
+            <p>
+                Our firm is committed to perform its work in acceptance to cater your manpower necessities,
+                procuring
+                the candidate with the desired profile and building trusting relationships. Owning to our industry
+                expertise, we comprehend that firms today have a need of more than an able candidate; they reach for
+                employees who are productive, exhibit a positive attitude and have the ability to become a member of
+                their team.
+            </p>
+            <p>
+                Apart from customary practices to source candidates, we also include pioneering means to procure
+                accurate professionals. Our experts influence the power of technology-based recruitment and focus on
+                online media to make sure that our clients receive the most suitable candidates for their
+                organization.
+            </p>
+
+            <div class="mission-vision">
+                <div class="vision-box">
+                    <h3>Our Vision</h3>
+                    <p>To be India's most trusted and innovative recruitment partner, recognized for our commitment
+                        to
+                        excellence and our ability to transform careers and businesses.</p>
+                </div>
+                <div class="mission-box">
+                    <h3>Our Mission</h3>
+                    <p>To provide exceptional recruitment services that connect talented professionals with leading
+                        organizations, fostering growth and success for both candidates and clients.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Us Section -->
+    <div class="contact-section section-bg contact-bg" id="contactSection">
+        <div class="content-box">
+            <span class="close-btn" onclick="closeContact()">&times;</span>
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">
+                            <a href="tel:9168248403">9168248403</a> <span
+                                style="font-size: 16px; opacity: 0.8;">(Work)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">
+                            <a href="mailto:hr@smartjobz.in">hr@smartjobz.in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---our clients= //taj grp of hotels, juniper hotels ltd. grand hyatt, forms and surfaces, schiller healthcare pvt ltd, me energy, siddhivinayak aesthetics pvt ltd//-->
+    <!-- OUR CLIENTS SECTION -->
+    <div class="clients-section section-bg clients-bg" id="clientSection">
+        <div class="content-box">
+            <span class="close-btn" onclick="closeClient()">&times;</span>
+            <h2>Our Clients</h2>
+
+            <div class="clients-wrapper">
+                <div class="clients-track" id="clientsTrack">
+                    <!-- SET 1 -->
+                    <div class="client-item"><img src="client1.jpeg"></div>
+                    <div class="client-item"><img src="client2.png"></div>
+                    <div class="client-item"><img src="client3.png"></div>
+                    <div class="client-item"><img src="client4.png"></div>
+                    <div class="client-item"><img src="client5.png"></div>
+                    <div class="client-item"><img src="client6.jpeg"></div>
+                    <div class="client-item"><img src="client7.png"></div>
+
+                    <!-- SET 2 -->
+                    <div class="client-item"><img src="client1.jpeg"></div>
+                    <div class="client-item"><img src="client2.png"></div>
+                    <div class="client-item"><img src="client3.png"></div>
+                    <div class="client-item"><img src="client4.png"></div>
+                    <div class="client-item"><img src="client5.png"></div>
+                    <div class="client-item"><img src="client6.jpeg"></div>
+                    <div class="client-item"><img src="client7.png"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="footer section-bg footer-bg">
+
+        <!-- WHY CHOOSE US SECTION -->
+        <div class="why-us-section">
+            <h2>💼 Why Choose Smart Jobz?</h2>
+            <div class="why-us-grid">
+                <div class="why-us-item">
+                    <div class="why-us-icon">✅</div>
+                    <h4>We Get You</h4>
+                    <p>We understand both sides of the job search — what employers need and what professionals want.
+                        That means better matches, not just placements.</p>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-us-icon">📈</div>
+                    <h4>Personalized, Not Generic</h4>
+                    <p>You're not a number. We tailor career or hiring solutions to your unique goals, culture, and
+                        skills — so the fit is strong and long-lasting.</p>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-us-icon">🤝</div>
+                    <h4>Fast & Reliable</h4>
+                    <p>We work with top companies and screen talent proactively, helping you find great
+                        opportunities
+                        (or exceptional talent) faster than typical job boards.</p>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-us-icon">📊</div>
+                    <h4>Quality Over Quantity</h4>
+                    <p>We don't spam resumes or listings. Our experts carefully shortlist only the most relevant
+                        candidates or roles to save time and improve success.</p>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-us-icon">💡</div>
+                    <h4>Tech-Enhanced, Human-Powered</h4>
+                    <p>We use smart tools to source talent and opportunities — then add human insight to ensure
+                        quality,
+                        communication, and trust every step of the way.</p>
+                </div>
+                <div class="why-us-item">
+                    <div class="why-us-icon">🌟</div>
+                    <h4>Trusted by Partners</h4>
+                    <p>Companies of all sizes trust us to deliver skilled professionals, and candidates trust us to
+                        guide their careers with transparency and commitment.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-container">
+            <!-- BRAND -->
+            <div>
+                <div class="footer-brand">Smart Jobz Recruitment Services</div>
+                <p>
+                    Your trusted recruitment partner connecting talented professionals
+                    with leading organizations across India.
+                </p>
+            </div>
+
+            <!-- QUICK LINKS -->
+            <div>
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="#" onclick="showHome(event)">Home</a>
+                    <a href="#" onclick="showAbout(event)">About Us</a>
+                    <a href="#" onclick="showContact(event)">Contact Us</a>
+                    <a href="#" onclick="showClient(event)">Our Clients</a>
+                </div>
+            </div>
+
+            <!-- CONTACT -->
+            <div>
+                <h3>Contact</h3>
+                <p>📞 <a href="tel:9168248403">9168248403</a></p>
+                <p>📧 <a href="hr@smartjobz.in">hr@smartjobz.in</a></p>
+                <p>📧 <a href="hr@smartjobz.in">hr@smartjobz.in</a></p>
+                <p>📍 India</p>
+            </div>
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+            © 2025 Smart Jobz. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Functions
+        function showAbout(event) {
+            event.preventDefault();
+            document.getElementById('homeContent').classList.add('hidden');
+            document.getElementById('contactSection').classList.remove('active');
+            document.getElementById('aboutSection').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showContact(event) {
+            event.preventDefault();
+
+            document.getElementById('homeContent').classList.add('hidden');
+            document.getElementById('aboutSection').classList.remove('active');
+            document.getElementById('clientSection').classList.remove('active');
+
+            document.getElementById('contactSection').classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showHome(event) {
+            event.preventDefault();
+
+            document.getElementById('aboutSection').classList.remove('active');
+            document.getElementById('contactSection').classList.remove('active');
+            document.getElementById('clientSection').classList.remove('active');
+
+            document.getElementById('homeContent').classList.remove('hidden');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+
+        function showClient(event) {
+            event.preventDefault();
+
+            // HIDE EVERYTHING FIRST
+            document.getElementById('homeContent').classList.add('hidden');
+            document.getElementById('aboutSection').classList.remove('active');
+            document.getElementById('contactSection').classList.remove('active');
+            document.getElementById('clientSection').classList.remove('active');
+
+            // SHOW ONLY CLIENTS
+            document.getElementById('clientSection').classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function closeAbout() {
+            document.getElementById('aboutSection').classList.remove('active');
+            document.getElementById('homeContent').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        function closeClient() {
+            document.getElementById('clientSection').classList.remove('active');
+            document.getElementById('homeContent').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function closeContact() {
+            document.getElementById('contactSection').classList.remove('active');
+            document.getElementById('homeContent').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Slideshow Functions
+        let slideIndex = 0;
+        let autoSlideTimer;
+
+        // Show initial slide
+        showSlides();
+
+        // Auto-advance slides every 4 seconds
+        function autoSlide() {
+            slideIndex++;
+            showSlides();
+            autoSlideTimer = setTimeout(autoSlide, 4000);
+        }
+
+        // Start auto-sliding
+        autoSlideTimer = setTimeout(autoSlide, 4000);
+
+        function changeSlide(n) {
+            clearTimeout(autoSlideTimer);
+            slideIndex += n;
+            showSlides();
+            autoSlideTimer = setTimeout(autoSlide, 4000);
+        }
+
+        function currentSlide(n) {
+            clearTimeout(autoSlideTimer);
+            slideIndex = n - 1;
+            showSlides();
+            autoSlideTimer = setTimeout(autoSlide, 4000);
+        }
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+
+            if (slideIndex >= slides.length) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+
+            // Remove all classes first
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active", "slide-out");
+            }
+
+            // Add slide-out to all non-active slides (they'll be hidden after animation)
+            for (let i = 0; i < slides.length; i++) {
+                if (i !== slideIndex) {
+                    slides[i].classList.add("slide-out");
+                }
+            }
+
+            // Add active to current slide
+            slides[slideIndex].classList.add("active");
+
+            // Clean up slide-out class after animation completes
+            setTimeout(() => {
+                for (let i = 0; i < slides.length; i++) {
+                    if (i !== slideIndex) {
+                        slides[i].classList.remove("slide-out");
+                    }
+                }
+            }, 800);
+        }
+        const track = document.getElementById("clientsTrack");
+        let scrollAmount = 0;
+
+        function autoScrollClients() {
+            scrollAmount += 1;
+            track.parentElement.scrollLeft = scrollAmount;
+
+            if (scrollAmount >= track.scrollWidth / 2) {
+                scrollAmount = 0;
+            }
+        }
+
+        setInterval(autoScrollClients, 20);
+
+
+
+    </script>
+
+</body>
+
+</html>
